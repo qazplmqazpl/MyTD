@@ -1,0 +1,10 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://b4kv3hyyxwka1"]
+
+[ext_resource type="Texture2D" uid="uid://cufn7ksg4k14e" path="res://Assets/Stickmen/Wizard/wizard1.png" id="1_btxa5"]
+[ext_resource type="Texture2D" uid="uid://bv5yqiwsr2gsf" path="res://Assets/Stickmen/Wizard/wizard2.png" id="2_7dx38"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_btxa5")
+frame_1/texture = ExtResource("2_7dx38")
+frame_1/duration = 1.0

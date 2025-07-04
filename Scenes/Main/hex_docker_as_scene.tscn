@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckth4e7no82fa"]
+
+[ext_resource type="Script" uid="uid://desq2r18mpdp8" path="res://hexdocker.gd" id="1_0h2je"]
+
+[node name="HexDocker" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0h2je")
+metadata/_custom_type_script = "uid://desq2r18mpdp8"

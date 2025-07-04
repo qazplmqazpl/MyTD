@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://l3iv3ulcrbyf"]
+
+[ext_resource type="Texture2D" uid="uid://b7bvb710mr2x3" path="res://Assets/Themes/placeholder9patch.tres" id="1_tcoof"]
+[ext_resource type="Script" uid="uid://c5y4axqubuwu0" path="res://Scenes/Main/TowerButton.gd" id="2_pwjy8"]
+[ext_resource type="Script" uid="uid://desq2r18mpdp8" path="res://hexdocker.gd" id="5_i82dx"]
+
+[node name="TowerButton" type="NinePatchRect"]
+custom_minimum_size = Vector2(246, 128)
+offset_right = 246.0
+offset_bottom = 128.0
+texture = ExtResource("1_tcoof")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+script = ExtResource("2_pwjy8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 118.0
+offset_bottom = 50.0
+
+[node name="HexDocker2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_i82dx")
+metadata/_custom_type_script = "uid://desq2r18mpdp8"
+
+[node name="HSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Labels" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Type" type="Label" parent="HBoxContainer/Labels"]
+layout_mode = 2
+text = "200 gold"
+
+[node name="TowerName" type="Label" parent="HBoxContainer/Labels"]
+layout_mode = 2
+text = "Wizard Tower"
