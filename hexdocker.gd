@@ -1,3 +1,4 @@
+@tool
 @icon("res://Assets/Editor/hexbutton.png")
 class_name HexDocker extends BlockDocker
 

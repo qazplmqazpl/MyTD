@@ -24,8 +24,10 @@ offset_right = 118.0
 offset_bottom = 50.0
 
 [node name="HexDocker2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_i82dx")
+basicsize = Vector2(128, 128)
 metadata/_custom_type_script = "uid://desq2r18mpdp8"
 
 [node name="HSeparator" type="VSeparator" parent="HBoxContainer"]

@@ -19,6 +19,7 @@ script = ExtResource("2_2mu5h")
 metadata/_custom_type_script = "uid://by33aq0ia0wms"
 
 [node name="BlockDocker" type="Control" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 24.0
@@ -37,11 +38,13 @@ script = ExtResource("3_2mu5h")
 metadata/_custom_type_script = "uid://b4i2pxwa4xk2s"
 
 [node name="HexDocker" type="Control" parent="."]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 913.0
 offset_top = 406.0
-offset_right = 953.0
-offset_bottom = 446.0
+offset_right = 1041.0
+offset_bottom = 534.0
 script = ExtResource("4_vbu8g")
+basicsize = Vector2(128, 128)
 metadata/_custom_type_script = "uid://desq2r18mpdp8"

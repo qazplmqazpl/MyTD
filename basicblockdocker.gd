@@ -1,12 +1,15 @@
 class_name BlockDocker extends Control
 
+@export
 var basicsize := Vector2(50,50):
 	set(value):
 		if dockedblock == null: set_size(value)
 		basicsize = value
 var reference = ReferenceRect.new()
 var dockedblock:
-	set(value):
+	set = dockedblock_set
+	
+func dockedblock_set(value):
 		if value == null : 
 			dockedblock = null
 			set_size(basicsize)

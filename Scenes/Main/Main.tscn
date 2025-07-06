@@ -1,33 +1,76 @@
-[gd_scene load_steps=10 format=4 uid="uid://c0l44d77bfsjn"]
+[gd_scene load_steps=15 format=4 uid="uid://c0l44d77bfsjn"]
 
+[ext_resource type="Script" uid="uid://c87n8gf6temrt" path="res://Scenes/Main/play_area_docker.gd" id="1_5s61s"]
 [ext_resource type="Texture2D" uid="uid://croevdosbcjx8" path="res://Assets/Themes/ThemesResources/9boxmonkeys.png" id="1_o8wgc"]
-[ext_resource type="Script" uid="uid://bsygira0m1kkr" path="res://Scenes/Main/basicresize.gd" id="2_o8wgc"]
+[ext_resource type="Texture2D" uid="uid://cxalqlams3po8" path="res://abc.png" id="3_dvlhv"]
 [ext_resource type="Texture2D" uid="uid://dvbrisll0g18r" path="res://Assets/Icons/optionsicon.png" id="3_o8wgc"]
 [ext_resource type="PackedScene" uid="uid://l3iv3ulcrbyf" path="res://Scenes/Main/Towers/WizardTowerButton.tscn" id="4_o8wgc"]
 [ext_resource type="Script" uid="uid://c1hsarl5ltvjy" path="res://Scenes/Main/Towers/testesttest.gd" id="4_w20t6"]
 [ext_resource type="PackedScene" uid="uid://ckth4e7no82fa" path="res://Scenes/Main/hex_docker_as_scene.tscn" id="6_aw1lf"]
 [ext_resource type="Script" uid="uid://bojale4li1xcy" path="res://block_docker_test.gd" id="7_aw1lf"]
+[ext_resource type="PackedScene" uid="uid://bkyk1owe22a6h" path="res://Scenes/label_as_scene.tscn" id="8_4vhfm"]
+[ext_resource type="Script" uid="uid://gxgkrg8362gn" path="res://Scenes/Main/tile_map_layer_docker.gd" id="11_dvlhv"]
+[ext_resource type="Script" uid="uid://cj7en2ux5tdio" path="res://CustomTileMap.gd" id="11_wgovn"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_aw1lf"]
+scenes/1/scene = ExtResource("8_4vhfm")
 scenes/2/scene = ExtResource("6_aw1lf")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgovn"]
+texture = ExtResource("3_dvlhv")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_5s61s"]
 tile_shape = 3
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetScenesCollectionSource_aw1lf")
+sources/1 = SubResource("TileSetAtlasSource_wgovn")
 
 [node name="Main" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="TowerMenu" type="NinePatchRect" parent="UI"]
-anchors_preset = 11
-anchor_left = 1.0
+[node name="TileMapLayerPosReference" type="TileMapLayer" parent="UI"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_5s61s")
+
+[node name="Button" type="Button" parent="UI"]
+offset_right = 136.0
+offset_bottom = 136.0
+scale = Vector2(0.25, 0.25)
+text = "Options"
+icon = ExtResource("3_o8wgc")
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -275.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayAreaDocker" type="Control" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+script = ExtResource("1_5s61s")
+metadata/_custom_type_script = "uid://by33aq0ia0wms"
+
+[node name="TowerMenu" type="NinePatchRect" parent="UI/Control/VBoxContainer"]
+custom_minimum_size = Vector2(353, 455)
+layout_mode = 2
+size_flags_horizontal = 10
 texture = ExtResource("1_o8wgc")
 region_rect = Rect2(0, 0, 128, 128)
 patch_margin_left = 16
@@ -36,9 +79,8 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-script = ExtResource("2_o8wgc")
 
-[node name="TowerVBox" type="VBoxContainer" parent="UI/TowerMenu"]
+[node name="TowerVBox" type="VBoxContainer" parent="UI/Control/VBoxContainer/TowerMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -50,33 +92,24 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TowerButton1" parent="UI/TowerMenu/TowerVBox" instance=ExtResource("4_o8wgc")]
+[node name="TowerButton1" parent="UI/Control/VBoxContainer/TowerMenu/TowerVBox" instance=ExtResource("4_o8wgc")]
 layout_mode = 2
 
-[node name="TowerButton2" parent="UI/TowerMenu/TowerVBox" instance=ExtResource("4_o8wgc")]
+[node name="TowerButton2" parent="UI/Control/VBoxContainer/TowerMenu/TowerVBox" instance=ExtResource("4_o8wgc")]
 layout_mode = 2
 script = ExtResource("4_w20t6")
 
-[node name="Button" type="Button" parent="UI"]
-offset_right = 136.0
-offset_bottom = 136.0
-scale = Vector2(0.25, 0.25)
-text = "Options"
-icon = ExtResource("3_o8wgc")
-icon_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAgABAAIAAAAAAAAAAgAAAAMAAAAAAAAAAgABAAEAAAAAAAAAAgACAAEAAAAAAAAAAgADAAAAAAAAAAAAAgAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAgAAAAQAAAAAAAAAAgAAAAUAAAAAAAAAAgAAAAYAAAAAAAAAAgABAAAAAAAAAAAAAgABAAMAAAAAAAAAAgABAAQAAAAAAAAAAgABAAUAAAAAAAAAAgABAAYAAAAAAAAAAgACAAAAAAAAAAAAAgACAAIAAAAAAAAAAgACAAMAAAAAAAAAAgACAAQAAAAAAAAAAgACAAUAAAAAAAAAAgACAAYAAAAAAAAAAgADAAEAAAAAAAAAAgADAAIAAAAAAAAAAgADAAMAAAAAAAAAAgADAAQAAAAAAAAAAgADAAUAAAAAAAAAAgADAAYAAAAAAAAAAgAEAAAAAAAAAAAAAgAEAAEAAAAAAAAAAgAEAAIAAAAAAAAAAgAEAAMAAAAAAAAAAgAEAAQAAAAAAAAAAgAEAAUAAAAAAAAAAgAEAAYAAAAAAAAAAgAFAAAAAAAAAAAAAgAFAAEAAAAAAAAAAgAFAAIAAAAAAAAAAgAFAAMAAAAAAAAAAgAFAAQAAAAAAAAAAgAFAAUAAAAAAAAAAgAFAAYAAAAAAAAAAgAGAAAAAAAAAAAAAgAGAAEAAAAAAAAAAgAGAAIAAAAAAAAAAgAGAAMAAAAAAAAAAgAGAAQAAAAAAAAAAgAGAAUAAAAAAAAAAgAGAAYAAAAAAAAAAgD//wAAAAAAAAAAAgD//wEAAAAAAAAAAgD//wIAAAAAAAAAAgD//wMAAAAAAAAAAgD//wQAAAAAAAAAAgD//wUAAAAAAAAAAgD//wYAAAAAAAAAAgD//wcAAAAAAAAAAgAAAAcAAAAAAAAAAgABAAcAAAAAAAAAAgACAAcAAAAAAAAAAgADAAcAAAAAAAAAAgAEAAcAAAAAAAAAAgAFAAcAAAAAAAAAAgAGAAcAAAAAAAAAAgAHAAAAAAAAAAAAAgAHAAEAAAAAAAAAAgAHAAIAAAAAAAAAAgAHAAMAAAAAAAAAAgAHAAQAAAAAAAAAAgAHAAUAAAAAAAAAAgAHAAYAAAAAAAAAAgAHAAcAAAAAAAAAAgA=")
-tile_set = SubResource("TileSet_5s61s")
-
-[node name="TestBlockDocker" type="Control" parent="."]
+[node name="TestBlockDocker" type="Control" parent="UI/Control/VBoxContainer/TowerMenu/TowerVBox"]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 723.0
-offset_top = 274.0
-offset_right = 773.0
-offset_bottom = 324.0
+layout_mode = 2
 script = ExtResource("7_aw1lf")
 metadata/_custom_type_script = "uid://bojale4li1xcy"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_set = SubResource("TileSet_5s61s")
+script = ExtResource("11_dvlhv")
+
+[node name="CustomTileMap" type="Node2D" parent="."]
+script = ExtResource("11_wgovn")
+metadata/_custom_type_script = "uid://cj7en2ux5tdio"

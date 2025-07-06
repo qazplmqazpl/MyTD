@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://desq2r18mpdp8" path="res://hexdocker.gd" id="1_0h2je"]
 
 [node name="HexDocker" type="Control"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 128.0
+offset_bottom = 128.0
 script = ExtResource("1_0h2je")
+basicsize = Vector2(128, 128)
 metadata/_custom_type_script = "uid://desq2r18mpdp8"
