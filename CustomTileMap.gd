@@ -10,7 +10,7 @@ var width = 128
 var tiles = [] #[ [x,y,node] , ... ]
 
 func _ready():
-	fill(0,10,0,10)
+	fill(0,5,0,5)
 
 func tilepos(posxy: Vector2i):
 	return Vector2(width*posxy.x+((posxy.y%2)*width*0.5),height*posxy.y*0.75)
@@ -41,7 +41,8 @@ func compare(tilea,tileb):
 	return false
 	
 func get_tile_at_pos(posxy:Vector2) -> BlockDocker:
-	print(posxy)
-	return tiles.get(tiles.bsearch_custom([posxy,null],compare))[1]
+	var index = tiles.bsearch_custom([posxy,null],compare)
+	if index < len(tiles): return tiles.get(tiles.bsearch_custom([posxy,null],compare))[1]
+	else: return null
 	
 	

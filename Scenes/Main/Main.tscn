@@ -32,6 +32,7 @@ sources/1 = SubResource("TileSetAtlasSource_wgovn")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TileMapLayerPosReference" type="TileMapLayer" parent="UI"]
+visible = false
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_5s61s")
 
